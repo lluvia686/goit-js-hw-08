@@ -64,26 +64,23 @@ const images = [
   },
 ];
 
+const gallery = document.querySelector('.gallery');
 
-const {preview, original, description} = images;
+images.forEach(image => {
+  const li = document.createElement('li');
+  li.classList.add('gallery-item');
 
-const ul = document.querySelector(".ul");
+  const link = document.createElement('a');
+  link.classList.add('gallery-link');
+  link.href = image.original;
 
-const li = document.createElement("li");
-li.classList.add("gallery-item");
+  const img = document.createElement('img');
+  img.classList.add('gallery-image');
+  img.src = image.preview;
+  img.dataset.source = image.original;
+  img.alt = image.description;
 
-const link = document.createElement("a");
-link.classList.add("gallery-link");
-link.href = original;
-
-const img = document.createElement("img");
-img.classList("gallery-image");
-img.src = preview;
-img.dataset.source = original;
-img.alt = description;
-
-ul.append("li");
-li.append("link");
-link.append("img");
-
-
+  link.append(img);
+  li.append(link);
+  gallery.append(li);
+});
