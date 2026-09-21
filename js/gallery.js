@@ -84,3 +84,13 @@ images.forEach(image => {
   li.append(link);
   gallery.append(li);
 });
+
+gallery.addEventListener("click", function(event) {
+  event.preventDefault();
+
+  if(event.target.nodeName !== "IMG") {
+    return;
+  }
+
+  console.log(event.target.dataset.source);
+});
